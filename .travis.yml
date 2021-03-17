@@ -1,17 +1,18 @@
 language: cpp
 matrix:
   include:
-  - os: osx
-    env: OS_BUILD=osx
+#  - os: osx
+#    env: OS_BUILD=osx
   - os: linux
     env: OS_BUILD=linux
     dist: xenial
+    arch: 
     sudo: required
     before_install:
     - sudo apt-get install -y libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev
       libcups2-dev libxrandr-dev libasound2 libasound2-dev
-  - os: windows
-    env: OS_BUILD=windows
+#  - os: windows
+#    env: OS_BUILD=windows
     before_install:
     - choco install cygwin
     - C:\\tools\\cygwin\\cygwinsetup.exe -q -P make,unzip,automake,autoconf,zip
@@ -48,12 +49,12 @@ script:
 deploy:
   provider: releases
   api_key:
-    secure: eXCep6AvLdzVHjwCoPmgYiY93Q8kWN73/AkwlFrzr5b1I3sDkvtcsZ1xDbo2syf1T1+CSwILW9A3NLjRKo9OVeEJhJFQysx8DP/aPgJ3wAR+9pRrQ/w6pPFKWpaH6nq8HFydfRJMm4MDEzR0GLXZTCaxG1L9biZlDcGbDm2M0lcduLUsa7XbUynGQNXh313vu1+YjCvlBIK2rT9HgMISojRslh/1fEJwxI0TKDb+vP582/q/IXqahxSCVjakW9P1kmEl4JyFLm+MnKeHBGEQ5D0o69c3UdKp7j5RwCubky3SC8FNX1jiMNH9XWE6KpeT7p9u2LVGMr+T3sLhKLk2ce8epikuCoMkDQKnjM+OZ7vs9uoIJa7/rnsYOazSWwEUgpVyrpQpQbLJ6mEqu5YeY9hxElb26EXLae/N+/67n+imNlB1xEhC8avvqafxYn1A2l9rib7j5xv1X+A2eWQk8BfC1lGmrsq7Y1qPU1xZ03e1oiQuCqY8QoytRgi9JxxOHa5NfdiREpKF2SsrbbZkUOkF5BXg2ujDFGDlxynxTvxB0D6JiAZoq0ASnTnsND1vIP+0/BLBjbADHTLVi6JBY/wQlWj1G+eDNcbLHNMV7MQm2L6jWqFKwi4zvoYknZI9qqo+2VVNTMTD+rwXENyhfc2OZjbY6ij8lq6b868DlYA=
-  file_glob: true
+    secure: 0b637b8b2e9a88dd4e65955e0a64c489e24f2fcb
+    file_glob: true
   file: openjdk-build/workspace/target/*
   skip_cleanup: true
   overwrite: true
   on:
-    repo: TravaOpenJDK/trava-jdk-11-dcevm
+    repo: markdbuck/trava-jdk-11-dcevm
     all_branches: true
     tags: true
