@@ -1,8 +1,6 @@
 language: cpp
 matrix:
   include:
-#  - os: osx
-#    env: OS_BUILD=osx
   - os: linux
     env: OS_BUILD=linux
     dist: xenial
@@ -11,11 +9,6 @@ matrix:
     before_install:
     - sudo apt-get install -y libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev
       libcups2-dev libxrandr-dev libasound2 libasound2-dev
-#  - os: windows
-#    env: OS_BUILD=windows
-#    before_install:
-#    - choco install cygwin
-#    - C:\\tools\\cygwin\\cygwinsetup.exe -q -P make,unzip,automake,autoconf,zip
 before_script:
   - if [[ $OS_BUILD == "windows" ]]; then
       git config --system core.longpaths true;
