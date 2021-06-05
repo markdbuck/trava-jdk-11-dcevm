@@ -34,6 +34,7 @@ jobs:
           # publicly in your project's package repository, so it is vital that
           # no secrets are present in the container state or logs.
           install: |
+            apt-get update -q -y
             apt-get install -y libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev libcups2-dev libxrandr-dev libasound2 libasound2-dev zip
 
           # Set an output parameter `uname` for use in subsequent steps
