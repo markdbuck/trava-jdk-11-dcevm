@@ -22,6 +22,20 @@ jobs:
           # a GitHub package registry.
           githubToken: ${{ github.token }}
 
+          # Pass some environment variables to the container
+          env: | # YAML, but pipe character is necessary
+            OS_BUILD: linux
+            FOLDER: aarch64
+
+          # Install some dependencies in the container. This speeds up builds if
+          # you are also using githubToken. Any dependencies installed here will
+          # be part of the container image that gets cached, so subsequent
+          # builds don't have to re-install them. The image layer is cached
+          # publicly in your project's package repository, so it is vital that
+          # no secrets are present in the container state or logs.
+          install: |
+            apt-get install -y libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev libcups2-dev libxrandr-dev libasound2 libasound2-dev zip
+
           # Set an output parameter `uname` for use in subsequent steps
           run: |
             uname -a
