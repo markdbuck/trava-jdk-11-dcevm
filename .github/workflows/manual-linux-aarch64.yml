@@ -25,8 +25,8 @@ jobs:
             --platform linux/arm64
           # Pass some environment variables to the container
           env: | # YAML, but pipe character is necessary
-            OS_BUILD linux
-            FOLDER aarch64
+            OS_BUILD: linux
+            FOLDER: aarch64
 
           # Install some dependencies in the container. This speeds up builds if
           # you are also using githubToken. Any dependencies installed here will
