@@ -7,7 +7,7 @@ jobs:
   aarch64_job:
     # The host should always be Linux
     runs-on: ubuntu-18.04
-    name: Build dcevm on ubuntu-18.04 aarch64
+    name: Build dcevm on ubuntu aarch64
     steps:
       - uses: actions/checkout@v2.1.0
       - uses: uraimo/run-on-arch-action@v2.0.5
@@ -15,14 +15,14 @@ jobs:
         id: runcmd
         with:
           arch: aarch64
-          distro: ubuntu18.04
+          distro: ubuntu16.04
 
           # Not required, but speeds up builds by storing container images in
           # a GitHub package registry.
           githubToken: ${{ github.token }}
 
-          # dockerRunArgs: |
-          #   --platform linux/arm64
+          dockerRunArgs: |
+            --platform linux/arm64
 
           # Pass some environment variables to the container
           env: | # YAML, but pipe character is necessary
