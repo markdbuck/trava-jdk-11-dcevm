@@ -1,0 +1,13 @@
+# This is a basic workflow to help you get started with Actions
+
+on:
+  workflow_dispatch:
+    
+jobs:
+  amd64_job:
+    # The host should always be Linux
+    runs-on: ubuntu-16.04
+    name: Build dcevm on ubuntu amd64
+    steps:
+      - uses: actions/checkout@v2.1.0
+      - run: ./build.sh
