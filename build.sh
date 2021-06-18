@@ -1,6 +1,6 @@
 #!/bin/bash
-apt-get update -q -y
-apt-get install -y git wget curl autoconf file libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev libcups2-dev libxrandr-dev libasound2 libasound2-dev zip
+sudo apt-get update -q -y
+sudo apt-get install -y git wget curl autoconf file libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev libcups2-dev libxrandr-dev libasound2 libasound2-dev zip
 git clone --depth 1 --branch travaopenjdk https://github.com/TravaOpenJDK/openjdk-build.git;
 export SOURCE_JDK_TAG=dcevm-11.0.11+1
 export HSWAP_AGENT_DOWNLOAD_URL=https://github.com/HotswapProjects/HotswapAgent/releases/download/RELEASE-1.4.1/hotswap-agent-1.4.1.jar
