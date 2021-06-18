@@ -8,8 +8,8 @@ export HSWAP_AGENT_CORE_DOWNLOAD_URL=https://github.com/HotswapProjects/HotswapA
 export JDK_BOOT_DIR="$PWD/openjdk-build/jdk-11"
 echo mkdir -p $JDK_BOOT_DIR
 mkdir -p "$JDK_BOOT_DIR"
-echo wget -q -O - "https://api.adoptopenjdk.net/v3/binary/version/jdk-11.0.4%2B11/linux/aarch64/jdk/hotspot/normal/adoptopenjdk?project=jdk" | tar xpzf - --strip-components=1 -C ${JDK_BOOT_DIR};
-wget -q -O - "https://api.adoptopenjdk.net/v3/binary/version/jdk-11.0.4%2B11/linux/aarch64/jdk/hotspot/normal/adoptopenjdk?project=jdk" | tar xpzf - --strip-components=1 -C ${JDK_BOOT_DIR};
+echo "wget -v -q -O - https://api.adoptopenjdk.net/v3/binary/version/jdk-11.0.4%2B11/linux/aarch64/jdk/hotspot/normal/adoptopenjdk?project=jdk | tar xpzf - --strip-components=1 -C ${JDK_BOOT_DIR}"
+wget -v -q -O - "https://api.adoptopenjdk.net/v3/binary/version/jdk-11.0.4%2B11/linux/aarch64/jdk/hotspot/normal/adoptopenjdk?project=jdk" | tar xpzf - --strip-components=1 -C ${JDK_BOOT_DIR};
 export JAVA_HOME="${JDK_BOOT_DIR}"
 echo ${SOURCE_JDK_TAG}
 bash -c "cd openjdk-build && export LOG=info && ./makejdk-any-platform.sh --tag \"${SOURCE_JDK_TAG}\" --build-variant dcevm --branch dcevm11-jdk-11.0.11-adopt --disable-test-image              --jdk-boot-dir ${JDK_BOOT_DIR} --hswap-agent-download-url \"${HSWAP_AGENT_DOWNLOAD_URL}\" --hswap-agent-core-download-url \"${HSWAP_AGENT_CORE_DOWNLOAD_URL}\" --configure-args '-disable-warnings-as-errors' --target-file-name java11-openjdk-dcevm-linux-aarch64.tar.gz jdk11u"
