@@ -6,7 +6,9 @@ export SOURCE_JDK_TAG=dcevm-11.0.11+1
 export HSWAP_AGENT_DOWNLOAD_URL=https://github.com/HotswapProjects/HotswapAgent/releases/download/RELEASE-1.4.1/hotswap-agent-1.4.1.jar
 export HSWAP_AGENT_CORE_DOWNLOAD_URL=https://github.com/HotswapProjects/HotswapAgent/releases/download/RELEASE-1.4.1/hotswap-agent-core-1.4.1.jar
 export JDK_BOOT_DIR="$PWD/openjdk-build/jdk-11"
+echo mkdir -p $JDK_BOOT_DIR
 mkdir -p "$JDK_BOOT_DIR"
+echo wget -q -O - "https://api.adoptopenjdk.net/v3/binary/version/jdk-11.0.4%2B11/linux/aarch64/jdk/hotspot/normal/adoptopenjdk?project=jdk" | tar xpzf - --strip-components=1 -C ${JDK_BOOT_DIR};
 wget -q -O - "https://api.adoptopenjdk.net/v3/binary/version/jdk-11.0.4%2B11/linux/aarch64/jdk/hotspot/normal/adoptopenjdk?project=jdk" | tar xpzf - --strip-components=1 -C ${JDK_BOOT_DIR};
 export JAVA_HOME="${JDK_BOOT_DIR}"
 echo ${SOURCE_JDK_TAG}
